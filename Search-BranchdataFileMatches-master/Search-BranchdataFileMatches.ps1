@@ -2,7 +2,7 @@ param (
     [Parameter(Mandatory=$true,Position=0,HelpMessage="Please specify a search string")]$searchString
 )
 
-$searchBase = "\\gcserv.com\branchdata"
+$searchBase = "\\FS01.sample.com\branchdata"
 
 Function Search-BranchdataFileMatches {
     

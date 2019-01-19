@@ -1,9 +1,9 @@
-$folderPath = "\\itsupport\install\Tech\Scripts\Mark\Powershell\Monitor-FileFolder"
+$folderPath = "\\FS01.sample\Scripts\Mark\Powershell\Monitor-FileFolder"
 $recurse = $True
 $filter = '*.*'
 
-$emailTo = 'Mark.Harden@gcserv.com'
-$emailFrom = 'BranchdataBot@gcserv.com'
+$emailTo = 'Mark.Harden@sample.com'
+$emailFrom = 'BranchdataBot@sample.com'
 $emailBody = 'See Attached'
 
 

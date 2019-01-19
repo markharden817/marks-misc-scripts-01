@@ -12,11 +12,11 @@ Import-Module PoshWSUS
 
 
 if ($TracyReport){
-    $ReportFileRoot = "\\hgopagcupd01.gcserv.com\WSUSReports"
+    $ReportFileRoot = "\\WSUS01.sample.com\WSUSReports"
     $ReportFilePathPendingUpdates = "$ReportFileRoot\$WSUSGroup WSUSReportFull-$((get-date).tostring("MMddyyyy-HHmmss")) PendingUpdates.csv"
     $ReportFilePathStaleWorkstations = "$ReportFileRoot\$WSUSGroup WSUSReportFull- $((get-date).tostring("MMddyyyy-HHmmss")) StaleWorkstations.csv"
 } else {
-    $ReportFilePath = "\\hgopagcupd01.gcserv.com\WSUSReports\$WSUSServer - $WSUSGroup - $((get-date).tostring("MMddyyyy-HHmmss")).html"
+    $ReportFilePath = "\\WSUS01.sample.com\WSUSReports\$WSUSServer - $WSUSGroup - $((get-date).tostring("MMddyyyy-HHmmss")).html"
 }
 
 
@@ -39,7 +39,7 @@ if ($UseSSL){
 
 if (!($connect)){
     Write-Host ""
-    Send-MailMessage -From "WSUS-Reports@noreply.gcserv.com" -To $EmailTo -Subject "ERROR: $WSUSServer WSUS Report" -Body "Report Failed: Connection Error" -SmtpServer gcsmtp.gcserv.com
+    Send-MailMessage -From "WSUS-Reports@noreply.sample.com" -To $EmailTo -Subject "ERROR: $WSUSServer WSUS Report" -Body "Report Failed: Connection Error" -SmtpServer smtp.sample.com
 }
 
 #Declare globals

@@ -9,7 +9,7 @@ Given two new and two old DHCP servers this script installs DHCP role, migrates 
 
 .EXAMPLE
 
-C:\PS> Migrate-DHCPScopes.ps1 -oldDC1 covpnmsadc01.gcserv.com -oldDC2 covpnmsadc02.gcserv.com -newDC1 covpndmctl01.gcserv.com -newDC2 covpndmctl02.gcserv.com -taskUserName srvDHCP@gcserv.com
+C:\PS> Migrate-DHCPScopes.ps1 -oldDC1 oldDC01.sample.com -oldDC2 oldDC02.sample.com -newDC1 newDC01.sample.com -newDC2 newDC02.sample.com -taskUserName srvDHCP@sample.com
 
 #>
 
@@ -18,7 +18,7 @@ param (
 	[Parameter(Mandatory=$true)][string]$oldDC2,
 	[Parameter(Mandatory=$true)][string]$newDC1,
 	[Parameter(Mandatory=$true)][string]$newDC2,
-	[string]$taskUserName = "HGO\srvDHCP"
+	[Parameter(Mandatory=$true)][string]$taskUserName
 )
  
  

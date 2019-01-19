@@ -1,12 +1,11 @@
-$serverList = Get-ADComputer -Filter 'Name -like "KNXPAGCUPD01"' | ?{$_.Name -ne "HGOPAGCUPD01"}
-
-
+$serverList = Get-ADComputer -Filter 'Name -like "WSUS"' | ?{$_.Name -ne "MASTER-WSUS"}
 
 
 $sb = {
 	$uploadScript = "U:\Syslogd\Scripts\Trackit_Upload.bat"
 	$dataScript = "U:\Syslogd\Scripts\Trackit-DATA.PS1"
-	#UploadScript
+	
+    #UploadScript
 	$taskName = "TrackIT_Upload"
 	$description = "Upload TrackIT Data"
 	$action = New-ScheduledTaskAction -Execute $uploadScript
@@ -44,12 +43,3 @@ $sb = {
 $serverList | %{
 	Invoke-Command -ScriptBlock $sb -Computername $($_.Name)
 }
-
-
-
-$serverList = Get-ADComputer -Filter 'Name -like "*PAGCUPD01"' | ?{$_.Name -ne "HGOPAGCUPD01"}
-
-#Ajax FirstRun
-$serverList | %{Invoke-Command -ComputerName $($_.Name) -ScriptBlock {U:\Syslogd\Scripts\Clean-WSUS\Clean-WSUS.ps1 -FirstRun } }
-#Ajax Schedule
-$serverList | %{Invoke-Command -ComputerName $($_.Name) -ScriptBlock {U:\Syslogd\Scripts\Clean-WSUS\Clean-WSUS.ps1 -InstallTask } }

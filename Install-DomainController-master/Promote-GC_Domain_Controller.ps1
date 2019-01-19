@@ -9,28 +9,16 @@ Promotes and configures Domain Controller to new system.
 
 .EXAMPLE
 
-C:\PS> Promote-GC_Domain_Controller.ps1 -Site "SAN" -hardenedTLS $True -TestPromote $True
+C:\PS> Promote-GC_Domain_Controller.ps1 -Site "SAN" -TestPromote $True -ReplicationSourceDC "DC01.sample.com"
 
 #>
 
 param (
     	[Parameter(Mandatory=$true)][string]$Site,
-		[Parameter(Mandatory=$true)][bool]$hardenedTLS,
-		[Parameter(Mandatory=$true)][bool]$TestPromote
+		[Parameter(Mandatory=$true)][bool]$TestPromote,
+        [Parameter(Mandatory=$true)][string]$ReplicationSourceDC
 )
-
 #-----------------------------------------------------------
-
-$ReplicationSourceDC="$($Site)PNMSADC01.gcserv.com"
-
-#Configure TLS Settings
-if ($hardenedTLS){
-	Write-host "Configuing TLS settings in accordance with InScope-TLS1.2-HARDCORE.ictpl policys"
-	\\itsupport\install\tech\IISCrypto\IISCryptoCli.exe /template \\itsupport\install\tech\IISCrypto\InScope-TLS1.2-HARDCORE.ictpl
-} elseif (!($hardenedTLS)) {
-	Write-host "Configuing TLS settings in accordance with 2k16-DC-Default.ictpl policys"
-	\\itsupport\install\tech\IISCrypto\IISCryptoCli.exe /template \\itsupport\install\tech\IISCrypto\2k16-DC-Default.ictpl
-} else {Write-Warning "que?"}
 
 #Install Role
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools

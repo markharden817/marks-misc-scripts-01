@@ -10,10 +10,8 @@ $NamespaceFolders = @(
     "Stage"
     )
 $DFSWriteableMembers = @(
-    "hgopndmctl02.gcserv.com"
-    "hgopndmctl04.gcserv.com"
-    #"hgopnmsadc02.gcserv.com"
-    #"hgopnmsadc04.gcserv.com"
+    "dc01.gcserv.com"
+    "dc02.gcserv.com"
     )
 
 function Configure-BranchdataDFSR {

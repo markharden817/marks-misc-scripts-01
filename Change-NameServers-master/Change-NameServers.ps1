@@ -3,10 +3,9 @@
     [Parameter(Mandatory=$False,Position=2)][string]$RunReport
     )
 
-$newDNS = "10.2.7.201","10.2.7.203"
+$newDNS = "10.1.1.1","10.1.1.2"
 
 $OUComputers = Get-ADComputer -SearchBase $OU -Filter *
-#$OUComputers = @("hgo174613")
 
 $myArr = New-Object System.Collections.ArrayList
 

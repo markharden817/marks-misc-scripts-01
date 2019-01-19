@@ -1,4 +1,4 @@
-﻿$NetAdapter = Get-NetAdapter | ?{$_.InterfaceDescription -notlike "*Loopback*"} | select ifIndex,Name,InterfaceDescription,Status,MacAddress,LinkSpeed | FT
+﻿$NetAdapter = Get-NetAdapter | ?{$_.InterfaceDescription -notlike "*Loopback*"} | select ifIndex, Name, InterfaceDescription, Status, MacAddress, LinkSpeed | FT
 
 
 function Main 
@@ -14,7 +14,7 @@ function Main
 	Write-Host "Consistent Value: GC_Default for Default VLAN or VLAN 210 for Development"
 	Write-Host ""
     $newInterfaceAlias = Read-Host -Prompt "New Interface Name "
-    Get-NetAdapter | ?{$_.InterfaceDescription -notlike "*Loopback*"} |Rename-NetAdapter -NewName $newInterfaceAlias # -Name $($NetAdapter.Name) 
+    Get-NetAdapter | ?{$_.InterfaceDescription -notlike "*Loopback*"} | Rename-NetAdapter -NewName $newInterfaceAlias # -Name $($NetAdapter.Name) 
     #Set NetAdapterRSS
     Get-NetAdapterRss | ?{$_.Enabled -eq $false} | Set-NetAdapterRss -Enabled $true
     #Set NetAdapter Power Management

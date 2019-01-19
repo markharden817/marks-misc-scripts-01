@@ -1,9 +1,9 @@
 ﻿#Set-WSUSReportersPermissions
 
-$WSUSServers = Get-ADComputer -Filter 'Name -like "*UPDMG*" -or Name -like "*GCUPD*"'
+$WSUSServers = Get-ADComputer -Filter 'Name -like "*WSUS*" -or Name -like "*UPD*"'
 $localGroup = "WSUS Reporters"
 $domainGroup = "Desktop Support"
-$domain = "gcserv.com"
+$domain = "sample.com"
 
 
 $WSUSServers.Name | %{
