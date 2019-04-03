@@ -1,0 +1,15 @@
+<#
+.EXAMPLE 
+WriteTo-Solarwinds -ComponentName UserCount -ComponentStatistic 10 -ComponentMessage "There are 10 users on the system"
+#>
+
+Function WriteTo-Solarwinds {
+    param (
+    	    [Parameter(Mandatory=$true)][string]$ComponentName,
+          [Parameter(Mandatory=$true)][string]$ComponentStatistic,
+          [Parameter(Mandatory=$false)][string]$ComponentMessage
+    )
+    
+    Write-Host "Statistic.$($ComponentName): $ComponentStatistic"
+    if ($ComponentMessage){Write-Host "Message.$($ComponentName): $ComponentMessage"}
+}
